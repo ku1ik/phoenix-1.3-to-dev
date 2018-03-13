@@ -20,9 +20,10 @@ defmodule ExampleWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: ExampleWeb
+
       import Plug.Conn
-      import ExampleWeb.Router.Helpers
       import ExampleWeb.Gettext
+      alias ExampleWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -32,14 +33,14 @@ defmodule ExampleWeb do
                         namespace: ExampleWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import ExampleWeb.Router.Helpers
       import ExampleWeb.ErrorHelpers
       import ExampleWeb.Gettext
+      alias ExampleWeb.Router.Helpers, as: Routes
     end
   end
 

@@ -19,12 +19,13 @@ defmodule ExampleWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug Plug.RequestId
   plug Plug.Logger
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head
@@ -35,7 +36,7 @@ defmodule ExampleWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_example_key",
-    signing_salt: "225q/fqm"
+    signing_salt: "cvL+aAxK"
 
   plug ExampleWeb.Router
 
